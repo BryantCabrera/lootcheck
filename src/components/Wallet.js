@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export class Wallet extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            balance: undefined
+        }
+    }
+    
     render() {
         return (
             <div>
