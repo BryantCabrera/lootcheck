@@ -29,6 +29,13 @@ const balance = (state = 0, action) => {
             balance = parseInt(read_cookie(BALANCE_COOKIE)) || state;
     }
 
+    // bakes a new cookie under BALANCE_COOKIE string and assigns it our balance value
+    bake_cookie(BALANCE_COOKIE, balance);
+    // How did the testing environment have access to browser cookies ?
+        // Jest makes a mock document in document.window object for the environment that’s available to fully simulate the object that we would find on a browser
+        // The cookies take advantage of this window object
+        // Since jest provides that window object, we can safely test those cookies
+
     return balance;
 }
 
