@@ -3,7 +3,8 @@ import { shallow } from 'enzyme';
 import { Wallet } from './Wallet';
 
 describe('Wallet', () => {
-    const props = { balance: 20 }
+    const mockDeposit = jest.fn();
+    const props = { balance: 20, deposit: mockDeposit }
     const wallet = shallow(<Wallet {...props} />);
 
     it('renders properly', () => {
@@ -32,6 +33,15 @@ describe('Wallet', () => {
             // parseInt(numberToConver, baseOfNumber)
                 // use 10 to be in decimal system
             expect(wallet.state().balance).toEqual(parseInt(userBalance, 10));
+        });
+
+        describe('and the user wants to make a despoit', () => {
+            beforeEach(() => wallet.find('.btn-deposit').simulate('click'));
+
+            it('dispatches the `deposit()` it receives from props with local balance', () => {
+                // check mock fn was called and passed in the correct argument
+                expect(mockDeposit).toHaveBeenCalledWith(parseInt(userBalance, 10));
+            });
         });
     });
 });
