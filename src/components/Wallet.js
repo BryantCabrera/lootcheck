@@ -17,7 +17,7 @@ export class Wallet extends Component {
     // in order to make it available, have to provide the action creator in that 2nd object parameter of the connect function
     deposit = () => this.props.deposit(this.state.balance)
 
-    deposit = () => this.props.withdraw(this.state.balance)
+    withdraw = () => this.props.withdraw(this.state.balance)
 
     render() {
         return (
@@ -43,7 +43,7 @@ export class Wallet extends Component {
 export default connect(state => {
     // *when you try to implicitly return an object, it generates errors
         // So, you need an explicit return statement in the function
-    return { balance: state };
+    return { balance: state }
     // deposit function comes from our redux store, accessible via props
         // in order to make it available, have to provide the action creator in that 2nd object parameter of the connect function
 }, { deposit, withdraw })(Wallet);
