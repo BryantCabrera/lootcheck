@@ -21,6 +21,6 @@ export class Wallet extends Component {
     // This is because the connected component export has a lot of context expectations that relate to that
 export default connect(state => {
     // *when you try to implicitly return an object, it generates errors
-        // So, you need a return statement in the function
+        // So, you need an explicit return statement in the function
     return { balance: state };
 }, null)(Wallet);
