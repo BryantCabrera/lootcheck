@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { balance } from '../actions/balance';
 
 export class Wallet extends Component {
     constructor() {
@@ -10,14 +11,19 @@ export class Wallet extends Component {
         }
     }
 
-    updateBalance = event => this.setState({ balance: parseInt(event.target.value, 10)})
+    updateBalance = event => this.setState({ balance: parseInt(event.target.value, 10) })
+    
+    // deposit function comes from our redux store, accessible via props
+    // in order to make it available, have to provide the action creator in that 2nd object parameter of the connect function
+    deposit = () => this.props.deposit(this.state.balance);
 
     render() {
         return (
             <div>
                 <h3 className="balance">Wallet balance: {this.props.balance}</h3>
                 <br />
-                <input className="input-wallet" onChange={this.updateBalance}/>
+                <input className="input-wallet" onChange={this.updateBalance} />
+                <button className="btn-deposit" onClick={this.deposit}>Deposit</button>
             </div>
         )
     }
@@ -35,4 +41,6 @@ export default connect(state => {
     // *when you try to implicitly return an object, it generates errors
         // So, you need an explicit return statement in the function
     return { balance: state };
-}, null)(Wallet);
+    // deposit function comes from our redux store, accessible via props
+        // in order to make it available, have to provide the action creator in that 2nd object parameter of the connect function
+}, { deposit })(Wallet);

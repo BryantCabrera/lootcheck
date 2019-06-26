@@ -35,7 +35,7 @@ describe('Wallet', () => {
             expect(wallet.state().balance).toEqual(parseInt(userBalance, 10));
         });
 
-        describe('and the user wants to make a despoit', () => {
+        describe('and the user wants to make a deposit', () => {
             beforeEach(() => wallet.find('.btn-deposit').simulate('click'));
 
             it('dispatches the `deposit()` it receives from props with local balance', () => {
