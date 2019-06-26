@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { balance } from '../actions/balance';
+import { deposit, withdraw } from '../actions/balance';
 
 export class Wallet extends Component {
     constructor() {
@@ -15,7 +15,9 @@ export class Wallet extends Component {
     
     // deposit function comes from our redux store, accessible via props
     // in order to make it available, have to provide the action creator in that 2nd object parameter of the connect function
-    deposit = () => this.props.deposit(this.state.balance);
+    deposit = () => this.props.deposit(this.state.balance)
+
+    deposit = () => this.props.withdraw(this.state.balance)
 
     render() {
         return (
@@ -24,6 +26,7 @@ export class Wallet extends Component {
                 <br />
                 <input className="input-wallet" onChange={this.updateBalance} />
                 <button className="btn-deposit" onClick={this.deposit}>Deposit</button>
+                <button className="btn-withdraw" onClick={this.withdraw}>Withdraw</button>
             </div>
         )
     }
@@ -43,4 +46,4 @@ export default connect(state => {
     return { balance: state };
     // deposit function comes from our redux store, accessible via props
         // in order to make it available, have to provide the action creator in that 2nd object parameter of the connect function
-}, { deposit })(Wallet);
+}, { deposit, withdraw })(Wallet);
