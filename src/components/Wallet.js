@@ -5,7 +5,7 @@ export class Wallet extends Component {
     render() {
         return (
             <div>
-                <h3 className="balance">Wallet balance:{this.props.balance}</h3>
+                <h3 className="balance">Wallet balance: {this.props.balance}</h3>
             </div>
         )
     }
@@ -19,4 +19,8 @@ export class Wallet extends Component {
 
 // We need to export the component itself and import as { } since it’s not the default export
     // This is because the connected component export has a lot of context expectations that relate to that
-export default connect(state => { balance: state}, null)(Wallet);
+export default connect(state => {
+    // *when you try to implicitly return an object, it generates errors
+        // So, you need a return statement in the function
+    return { balance: state };
+}, null)(Wallet);

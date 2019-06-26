@@ -9,7 +9,12 @@ describe('App', () => {
         expect(app).toMatchSnapshot();
     });
 
-    it('contains a Wallet component', () => {
-        expect(app.find('Wallet').exists()).toBe(true);
+    it('contains a connected Wallet component', () => {
+        // Because our Wallet component was connected to redux, we need to import the connected one
+            // Use the following enzyme trick
+            // This will tell you what the component looks like (should be wrapped with <Connect(Wallet) />
+        console.log(app.debug());
+
+        expect(app.find('Connect(Wallet)').exists()).toBe(true);
     });
 });
