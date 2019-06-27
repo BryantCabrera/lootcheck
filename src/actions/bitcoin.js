@@ -1,6 +1,6 @@
 import { FETCH_BITCOIN } from './constants';
 
-export const fetchBitCoin = () => {
+export const fetchBitcoin = () => {
     // with this dispatch, we can return an asynchronous fetch
     // we trust that dispatch is returned from the thunk middleware
     return dispatch => {

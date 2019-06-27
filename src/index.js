@@ -3,8 +3,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+// import rootReducer from './reducers/balance'; // replaced with below
 import rootReducer from './reducers';
-import rootReducer from './reducers/balance';
 import { Provider } from 'react-redux'; // provides redux store to whole application
 import App from './components/App';
 

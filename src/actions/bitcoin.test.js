@@ -34,6 +34,6 @@ it('creates an async action to fetch the bitcoin value', () => {
     // Jest: if we are executing and testing a promise in an it block, in order for it to successfully finish and execute the asynchronous code, we need to return a promise.  otherwise, jest can't properly execute the test
         // solution: return the .dispatch
     return store.dispatch(fetchBitcoin()).then(() => {
-        expectedAction(store.getActions()).toEqual(expectedActions);
+        expect(store.getActions()).toEqual(expectedActions);
     });
 });
