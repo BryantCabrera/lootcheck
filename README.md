@@ -16,6 +16,8 @@ LootCheck is a full stack app built in 1 day by Bryant Cabrera
     3. CSS
     4. BEM
     5. react-bootstrap
+    6. redux
+    7. react-redux
 
 > Back-End
 
@@ -32,6 +34,7 @@ LootCheck is a full stack app built in 1 day by Bryant Cabrera
     
     1. Jest
     2. Enzyme
+    3. redux-thunk
 
 > Planning/Organization/Design
     
