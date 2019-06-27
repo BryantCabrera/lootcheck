@@ -43,7 +43,8 @@ export class Wallet extends Component {
 export default connect(state => {
     // *when you try to implicitly return an object, it generates errors
         // So, you need an explicit return statement in the function
-    return { balance: state }
+    // usually, you only want the specific relevant data from redux store that you want to be mapped onto the component.  So instead of assigning all of state, we just assign state.balance
+    return { balance: state.balance }
     // deposit function comes from our redux store, accessible via props
         // in order to make it available, have to provide the action creator in that 2nd object parameter of the connect function
 }, { deposit, withdraw })(Wallet);
