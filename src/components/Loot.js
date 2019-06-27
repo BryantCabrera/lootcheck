@@ -4,6 +4,10 @@ import { fetchBitcoin } from '../actions/bitcoin';
 
 // we want to export the bare component for our tests
 export class Loot extends Component {
+    componentDidMount() {
+        this.props.fetchBitcoin();
+    }
+
     render() {
         return (
             <h3>Bitcoin balance:</h3>
